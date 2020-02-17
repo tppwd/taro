@@ -331,7 +331,10 @@ export function copyFilesFromSrcToOutput (files: string[], cb?: (sourceFilePath:
     modifySrc = modifySrc.split(path.sep).join('/')
     let modifyOutput = outputFilePath.replace(appPath + path.sep, '')
     modifyOutput = modifyOutput.split(path.sep).join('/')
-    printLog(processTypeEnum.COPY, '文件', modifyOutput)
+    if (modifyOutput.indexOf('/app.json') !== -1) {
+      return;
+    }
+    printLog(processTypeEnum.COPY, '文件1', modifyOutput)
     if (!fs.existsSync(file)) {
       printLog(processTypeEnum.ERROR, '文件', `${modifySrc} 不存在`)
     } else {

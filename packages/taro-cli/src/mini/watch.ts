@@ -124,12 +124,12 @@ export function watchFiles () {
             })
             let modifySource = filePath.replace(appPath + path.sep, '')
             modifySource = modifySource.split(path.sep).join('/')
-            if (isImported) {
-              printLog(processTypeEnum.MODIFY, 'JS文件', modifySource)
-              await compileDepScripts([filePath], !isQuickApp)
-            } else {
-              printLog(processTypeEnum.WARNING, 'JS文件', `${modifySource} 没有被引用到，不会被编译`)
-            }
+            // if (isImported) {
+            printLog(processTypeEnum.MODIFY, 'JS文件', modifySource)
+            await compileDepScripts([filePath], !isQuickApp)
+            // } else {
+              // printLog(processTypeEnum.WARNING, 'JS文件', `${modifySource} 没有被引用到，不会被编译`)
+            // }
           }
         }
       } else if (REG_STYLE.test(extname)) {
